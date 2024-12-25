@@ -15,9 +15,8 @@ class Track(db.Model):
     key = db.Column(db.Integer, nullable=False)
     genre = db.Column(db.String(50), nullable=False)
 
-# Inițializăm baza de date
-@app.before_first_request
-def create_tables():
+# Inițializăm baza de date manual
+with app.app_context():
     db.create_all()
 
 # Ruta pentru adăugarea unei piese
